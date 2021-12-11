@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- ===== CSS ===== -->
+        <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+
+        <!-- ===== BOX ICONS ===== -->
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+         <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %} "/>
+        <title>Portfolio responsive complete</title>
+
+    </head>
+<body>
+
+
+
+      <!--===== CONTACT =====-->
+            <section class="contact__section " id="contact ">
+                {% for msg in messages %}
+                        <p class="text-success ml-3 " style="margin-left: 50px;">{{msg}}</p>
+                {% endfor %}
+
+                <h2 style="text-align: center;text-decoration: underline blue  ;">Contact</h2>
+                <a href="{% url 'index' %}"><button class="btn btn-primary" style="margin-left: 100px;"> Retour</button></a>
+                <div class="contact__container mt-3 bd-grid bg-success p-2 text-dark bg-opacity-25 rounded-3  ">
+
+                    <div class="contact__info " >
+                        <h3 class="contact__subtitle">EMAIL</h3>
+                        <span class="contact__text">sirikibamba68@gmail.com</span>
+
+                        <h3 class="contact__subtitle">PHONE</h3>
+                        <span class="contact__text">+225 07 09 59 70 30</span>
+                        <br/>
+                        <span class="contact__text">+225 05 44 20 57 16</span>
+
+                        <h3 class="contact__subtitle">ADRESS</h3>
+                        <span class="contact__text">Côte d'Ivoire</span>
+                    </div>
+
+                    <form action="" class="contact__form" method="POST">
+                        {% csrf_token %}
+                        <div class="contact__inputs">
+                            <input type="text" placeholder="Name"  name="nom" class="contact__input" required >
+                            <input type="mail" placeholder="Email" name="email" class="contact__input" required>
+
+                        </div>
+                        <textarea name="message" placeholder="Message"  cols="0" rows="10" class="contact__input" required></textarea>
+                          <input type="submit" value="Envoyer" class="contact__button">
+
+
+                    </form>
+                </div>
+            </section>
+     <!--===== SCROLL REVEAL =====-->
+        <script src="https://unpkg.com/scrollreveal"></script>
+
+        <!--===== MAIN JS =====-->
+        <script src="{% static 'assets/js/main.js' %}"></script>
+</body>
+</html>

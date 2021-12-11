@@ -1,0 +1,177 @@
+<div class="contact__inputs">
+    <input type="text" placeholder="Nom" name="" class="contact__input">
+    <input type="mail" placeholder="Email" name="" class="contact__input">
+</div>
+
+<textarea name="" id="" cols="0" rows="10" class="contact__input" placeholder="Message"></textarea>
+
+<input type="submit" value="Envoyer" class="contact__button">
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <h1>Contactez-moi</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Envoyer">
+    </form>
+    
+</body>
+</html>
+
+
+from django import forms
+from myportfolio.models import PorfolioMessage
+
+class PortfolioForm(forms.ModelForm):
+    class Meta:
+        model = PorfolioMessage
+        fields = ["nom", "email", "message"]
+
+
+        
+def send_messaage(request):
+if request == "POST":
+    form = PortfolioForm(request.POST)
+    if form.is_valid():
+        form.save()
+    return HttpResponseRedirect (request.Path)
+        
+else:
+    form = PortfolioForm()
+return render(request, "index.html", {"form":form}) 
+
+
+
+<input type="text" placeholder="Nom" class="contact__input" name="nom" value="{{ form.nom}}">
+<input type="mail" placeholder="Email" class="contact__input" name="email" value="{{ form.nom}}">
+<textarea name="message" id="" cols="0" rows="10" class="contact__input" placeholder="Message" value="{{ form.message}}"></textarea>
+
+views
+
+
+def send_message(request):
+    if request == 'POST':
+        form = PortfolioForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return HttpResponseRedirect (request.Path)
+
+    else:
+        form = PortfolioForm()
+    return render(request, 'contact.html', {"form": form})
+
+
+    if request == "POST":
+        nom = request.POST["nom"]
+        email = request.POST["email"]
+        message = request.POST["message"]
+        return render(request, "contact.html", )
+
+    else:
+        return render(request, "contact.html", {"form": "form"})
+
+
+formulaire
+
+
+  submitted = False
+    if request.method == "POST":
+        form = PortfolioForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/send_message?submitted')
+    else:
+        form = PortfolioForm
+        if 'submitted' in request.GET:
+            submitted = True
+    return render(request, 'contact/contact.html', {'form': form, 'submitted': submitted})
+
+
+
+
+contact
+
+  <!--===== CONTACT =====-->
+            <section class="contact section" id="contact">
+
+                <h2 class="section-title">Contact </h2>
+
+                <div class="contact__container bd-grid bg-light">
+                    <div class="contact__info">
+                        <h3 class="contact__subtitle">Email</h3>
+                        <span class="contact__text">sirikibamba68@gmail.com</span>
+
+                        <h3 class="contact__subtitle">Phone</h3>
+                        <span class="contact__text">+225 07 09 59 70 30</span> <br/>
+                        <span class="contact__text">+225 05 44 20 57 16</span>
+
+                        <h3 class="contact__subtitle">Adress</h3>
+                        <span class="contact__text">Abidjan Ivory Coast </span>
+                    </div>
+
+                       <form action="" class="contact__form" method=POST >
+                            {% csrf_token %}
+                            {{ form.as_p}}
+                            <button type="submit" class="btn btn-primary">Envoyer</button>
+                       </form>
+
+                </div>
+
+            </section>
+
+  <span class="skills__name">PHP</span>
+                    <span class="skills__name">ANGULAR</span>
+                    <span class="skills__name">SQL</span>
+                    <span class="skills__name">Git</span>
+
+
+                    <h3 class="skills__subtitle">Design</h3>
+                    <span class="skills__name">FIGMA</span>
+                    <span class="skills__name">SKETCH</span>
+
+
+
+
+ <!--===== CONTACT =====-->
+            <section class="contact section" id="contact">
+                <h2 class="section-title">Contact</h2>
+
+                <div class="contact__container bd-grid">
+                    <div class="contact__info">
+                        <h3 class="contact__subtitle">EMAIL</h3>
+                        <span class="contact__text">sirikibamba68@gmail.com</span>
+
+                        <h3 class="contact__subtitle">PHONE</h3>
+                        <span class="contact__text">+225 07 09 59 70 30</span>
+                         <br/>
+                        <span class="contact__text">+225 05 44 20 57 16</span>
+
+                        <h3 class="contact__subtitle">ADRESS</h3>
+                        <span class="contact__text">My contry</span>
+                    </div>
+
+                    <form action="" class="contact__form" method="POST">
+                        {% csrf_token %}
+                        <div class="contact__inputs">
+                            <input type="text" placeholder="Name"  id="nom" name="nom" class="contact__input" required>
+                            <input type="email" placeholder="Email"   id="email" name="email" class="contact__input" required>
+
+                        </div>
+
+                        <textarea name="message" id="message" cols="0" rows="10" class="contact__input" required></textarea>
+
+
+                        <input type="submit" value="Envoyer" class="contact__button">
+                    </form>
+                </div>
+            </section>
