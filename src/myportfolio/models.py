@@ -56,6 +56,7 @@ class Skills(models.Model):
     skill_name = models.CharField(max_length=30)
 
 
+
 # portfolio section 
 
 
@@ -81,4 +82,20 @@ class PorfolioMessage(models.Model):
         
     def __str__(self):
         return self.nom
+    
+# Experience professionelle
+    
+class Experiences(models.Model):
+    experience_name = models.CharField(max_length=100)
+    experience_Post = models.CharField(max_length=100)
+    experience_description = models.TextField()
+    experience_img = models.ImageField(upload_to='experience/')
+   
+
+
+    class Meta:
+        verbose_name = "Experience"
+        
+    def __str__(self):
+        return self.experience_name    
         

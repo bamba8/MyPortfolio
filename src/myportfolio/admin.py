@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.db import models
-from .models import Home, About, Profile, Category, Skills, Portfolio, PorfolioMessage
+from .models import Experiences, Home, About, Profile, Category, Skills, Portfolio, PorfolioMessage
 
 
 # Section Accueil (home)
@@ -39,3 +39,8 @@ admin.site.register(Portfolio)
 
 # formulaire
 admin.site.register(PorfolioMessage)
+
+
+#Experience professionnelle
+
+admin.site.register(Experiences)

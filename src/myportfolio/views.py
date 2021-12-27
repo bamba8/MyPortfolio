@@ -5,7 +5,7 @@ import datetime
 
 from .formulaire import PortfolioForm
 
-from .models import Home, About, Profile, Category, Skills, Portfolio
+from .models import  Experiences, Home, About, Profile, Category, Skills, Portfolio
 from django.contrib import messages
 
 
@@ -35,6 +35,7 @@ def index(request):
     
     return render(request, "index.html", context)
 
+    
 
 def send_message(request):
 
@@ -50,6 +51,10 @@ def send_message(request):
     return render(request, "contact/contact.html", {"form": form})
 
 
+def experiences(request):
+    experience = Experiences.objects.all()
+    return render(request, "exp.html", {"experience": experience})
+    
 
 
 

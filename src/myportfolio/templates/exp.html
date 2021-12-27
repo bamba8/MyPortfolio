@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+
+    <!-- ===== BOX ICONS ===== -->
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>Mon portfolio personnel</title>
+</head>
+<body>
+   
+
+    <main class="l-main">
+    <!--===== ABOUT =====-->
+    <section class="about section" id="about">
+        <h2 class="section-title">Mes Experiences Professionnelles</h2>
+
+        <div class="about__container bd-grid">
+            {% for expe in experience %}
+            <div class="about__img">
+                <img src="{{ expe.experience_img.url}}" alt=""> 
+            </div>
+
+            <div> 
+                <h2 class="about__subtitle">{{ expe.experience_name }}</h2>
+                <span class="about__profession">{{expe.experience_Post}}</span>
+                <p class="about__text">{{ expe.experience_description}}</p>
+
+                
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+
+    </main>
+     <!--===== SCROLL REVEAL =====-->
+     <script src="https://unpkg.com/scrollreveal"></script>
+
+     <!--===== MAIN JS =====-->
+     <script src="{% static 'assets/js/main.js' %}"></script>    
+</body>
+</html>
